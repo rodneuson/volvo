@@ -1,0 +1,58 @@
+﻿@model IEnumerable<VolvoTrucks.Models.Trucks>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Trucks</h1>
+
+<div style="text-align: right">
+    <a href="/Truck/New">
+        <button type="button" class="btn btn-primary">Create New</button>
+    </a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Chassis
+            </th>
+            <th>
+                Maximum Load
+            </th>
+            <th>
+                Model Name
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Chassis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumLoad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.ModelName)
+                </td>
+                <td>
+                    <a href="/Truck/Edit/@item.Id">
+                        <button type="button" class="btn btn-success">Edit</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/Truck/Delete/@item.Id">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@model VolvoTrucks.Models.Trucks
+
+@{
+    ViewData["Title"] = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Truck</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label asp-for="ModelId" class="control-label">Model</label>
+                @Html.DropDownListFor(model => model.ModelId, VolvoTrucks.Services.TruckModelServices.GetSelectListItems(), null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Chassis" class="control-label">Chassis</label>
+                @Html.TextBoxFor(model => model.Chassis, null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumLoad" class="control-label">Maximun Load</label>
+                @Html.TextBoxFor(model => model.MaximumLoad, null, new { @class = "form-control" })
+            </div>
+            <div class="form-group text-danger">
+                @Html.ValidationSummary()
+                </div>
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <a href="/Truck">
+                                <input type="button" value="Cancel" class="btn btn-danger" />
+                            </a>
+                        </td>
+                        <td style="text-align: right">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </table>
+                }
+            </div>
+        </div>
